@@ -16,8 +16,9 @@ const {chromium} = require('playwright');
     await page.locator('//*[@type="submit" and @data-qa="login-button"]').waitFor();
 
     // Crear una cuenta
+    
     await page.locator('//*[contains(@action, "signup")]/*[contains(@placeholder,"Name")]').fill('prueba');
-    await page.locator('//*[contains(@action, "signup")]/*[contains(@placeholder,"Email")]').fill('prueba_004@mailinator.com');
+    await page.locator('//*[contains(@action, "signup")]/*[contains(@placeholder,"Email")]').fill('prueba_001@mailinator.com');
     await page.locator('//*[contains(@action, "signup")]/*[contains(@type,"submit")]').click();
 
     await page.locator('//*[contains(text(),"Enter Account Information")]').waitFor();
@@ -70,10 +71,17 @@ const {chromium} = require('playwright');
     await page.locator('//*[@id="mobile_number" and @type="text"]').fill('+1234567890');
 
     // Enviar el formulario
+
     await page.locator('//*[contains(@data-qa,"create-account") and @type="submit"]').click();
 
     // Verificar que la cuenta se ha creado
+
     await page.locator('//*[contains(text(),"Account Created!")]').waitFor({ state: 'visible' });
+
+    // Continuar a la cuenta
+
+    await page.locator('//*[contains(@data-qa,"continue-button") and @class="btn btn-primary"]').click();
+    await page.locator('xpath=//*[@alt = "Website for automation practice"]').waitFor({ state: 'visible' });
 
     await page.waitForTimeout(5000); // Espera 5 segundos para ver el texto escrito
     await browser.close();

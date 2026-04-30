@@ -25,9 +25,12 @@ const {chromium} = require('playwright');
     
     await page.locator('//*[contains(text(),"Logged in as")]').waitFor( {state: 'visible'} );
 
-    // Home
+    // Eliminar cuenta
 
-    await page.locator('xpath=//*[@alt = "Website for automation practice"]').waitFor({ state: 'visible' });
+    await page.locator('//*[contains(text(),"Delete Account")]').click();
+    await page.locator('//*[contains(text(),"Account Deleted!")]').waitFor( {state: 'visible'} );
+    await page.locator('//*[contains(@class,"btn btn-primary")]').click();
+    await page.locator('xpath=//*[@alt = "Website for automation practice"]').waitFor( {state: 'visible'} );
 
     // Cerrar navegador
 
