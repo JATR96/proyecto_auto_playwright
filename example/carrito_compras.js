@@ -29,7 +29,7 @@ const {chromium} = require('playwright');
 
     await page.locator('//*[@alt = "Website for automation practice"]').waitFor({ state: 'visible' });
 
-    // Agregar productos al carrito
+    // Carrito de compras
 
     await page.locator('//*[contains(@href, "cart")]/*[contains(@class, "shopping")]').click();
 
